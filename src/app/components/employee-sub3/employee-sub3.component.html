@@ -1,0 +1,21 @@
+<h4>Employee Subject component3 as publisher</h4>
+<form>
+    <div class="form-group">
+      <label for="empId">Emp Id</label>
+      <input type="number" class="form-control" name="eId" [(ngModel)]="inputEmployee.eId"
+        placeholder="Enter empId">
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="inputEmployee.name" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="name">salary</label>
+      <input type="text" class="form-control" name="sal" placeholder="Salary" [(ngModel)]="inputEmployee.sal">
+    </div>
+    <div class="form-group">
+      <label for="name">Gender</label>
+      <input type="text" class="form-control" name="gender" placeholder="Gender" [(ngModel)]="inputEmployee.gender">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addEmp(inputEmployee);">Submit</button>
+  </form>

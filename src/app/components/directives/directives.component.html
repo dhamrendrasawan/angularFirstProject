@@ -1,0 +1,135 @@
+<h2 class="text-center">This is Directive Component</h2>
+
+<h1 *ngIf="flag">
+    Hellooooooooooooooooo
+</h1>
+
+@if(flag){
+<h1>truuuuuuuuuuuuu</h1>
+}@else{
+<h1>Falseeeeeeeeeeeeeeeeeeeee</h1>
+}
+<!-- <div @if="5==5">Helloooooooo</div> -->
+
+<h3 *ngIf="flag">This is a paragraph</h3>
+<h3 [hidden]="!flag">This is another paragraph</h3>
+
+<h4 *ngIf="n%2 == 0" [ngStyle]="n%2==0 ? style1 : style2">{{n}} is Even Number</h4>
+<h4 *ngIf="n%2 != 0" [ngStyle]="n%2!=0 ? style1 : style2">{{n}} is Odd Number</h4>
+
+<h4 *ngIf="n%2 == 0" [style.color]="n%2 == 0?'blue':'red'">{{n}} is Even Number</h4>
+<h4 *ngIf="n%2 != 0" [style.color]="n%2 == 0?'blue':'red'">{{n}} is Odd Number</h4>
+<h4 *ngIf="n%2 == 0; else oddBlock" [style.fontSize.px]='48'>
+    {{n}} is Even Number
+</h4>
+<ng-template #oddBlock>
+    <h4 [style.fontSize.px]='24'>{{n}} is Odd Number</h4>
+</ng-template>
+
+<button class="btn btn-primary" [ngClass]="!flag ? 'disabled' : '' ">Click me</button>
+<p [ngClass]="flag ? getClasses():''">This is a paragraph with ngclass</p>
+
+<hr />
+
+<h1 [ngSwitch]="n">
+    <p *ngSwitchCase="1">Monday</p>
+    <p *ngSwitchCase="2">Tuesday</p>
+    <p *ngSwitchCase="3">Wednesday</p>
+    <p *ngSwitchCase="4">Thursday</p>
+    <p *ngSwitchCase="5">Friday</p>
+    <p *ngSwitchCase="6">Saturday</p>
+    <p *ngSwitchCase="0">Sunday</p>
+    <p *ngSwitchDefault>Not a valid number</p>
+</h1>
+
+@switch (n) {
+@case (1) { <h1>Monday</h1> }
+@case (2) { <h1>Tuesday</h1> }
+@case (3) { <h1>Wednesday</h1> }
+@case (4) { <h1>Thursday</h1> }
+@case (5) { <h1>Friday</h1> }
+@case (6) { <h1>Saturday</h1> }
+@case (7) { <h1>Sunday</h1> }
+@default { <h1>Not a Valid number</h1>> }
+}
+
+<ol>
+    <li *ngFor="let car of cars">
+        {{car}}
+    </li>
+</ol>
+<div *ngFor="let car of cars;let i=index">
+    {{i+1}}==={{car}}
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th *ngFor="let col of employeeColumns">
+                {{col}}
+            </th>
+            <th>Index</th>
+            <th>First?</th>
+            <th>Last?</th>
+            <th>Even?</th>
+            <th>Odd?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees;trackBy:trackByempId;let i=index;
+                let f=first;let l=last;let e = even;let o=odd">
+            <td>{{emp?.eId}}</td>
+            <td>{{emp?.name}}</td>
+            <td>{{emp?.sal}}</td>
+            <td>{{emp.gender}}</td>
+            <td>{{i+1}}</td>
+            <td>{{f}}</td>
+            <td>{{l}}</td>
+            <td>{{e}}</td>
+            <td>{{o}}</td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" (click)="addEmployee()">Add Employee</button>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th *ngFor="let col of employeeColumns">
+                {{col}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(emp of employees;track emp.eId){
+        <tr>
+            <td>{{emp?.eId}}</td>
+            <td>{{emp?.name}}</td>
+            <td>{{emp?.sal}}</td>
+            <td>{{emp?.gender}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<h3>
+    <span highlight id="myspan">Students using *ngFor:</span>
+    <div *ngFor="let student of students">
+        {{student}}
+    </div>
+</h3>
+
+<h3>
+    Students Using new syntax:
+    @for(student of students;track student){
+    <div>{{student}}</div>
+    }@empty{
+    <div>No Student available</div>
+    }
+</h3>
+
+<h1><span hightlight>this is a paragraph Dhamrendra</span></h1>
+
+<button class="btn btn-primary" (click)="openAlert()">click me</button>
+
+<input  type="text" name="" id="">
+<input numberOnly type="text" name="" id="">

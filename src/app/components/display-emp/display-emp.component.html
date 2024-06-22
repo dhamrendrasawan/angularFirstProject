@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <h3 style="color:green;text-align:center">Employee Details</h3><br>
+        <div class="col-sm-9 text-center">            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col">Employee Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Salary</th>
+                      <th scope="col">Gender</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <div *ngIf="isData;else no_content"></div>
+                    <tr *ngFor="let emp of employees">
+                      <td>{{emp.eId}}</td>
+                      <td>{{emp.name}}</td>
+                      <td>{{emp.sal}}</td>
+                      <td>{{emp.gender}}</td>
+                    </tr>
+            </table>
+            <ng-template #no_content><h4 style="text-align: right;color:red;margin-left: 300px;">no employee data</h4></ng-template>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-8 text-center">
+            <button type="button" class="btn btn-primary mx-2" (click)="getAllEmployees()">GetAllEmployee</button>
+            <button type="button" class="btn btn-primary mx-2" (click)="getMaleEmployees()">GetAllMaleEmployee</button>
+            <button type="button" class="btn btn-primary mx-2" (click)="getFemaleEmployees()">GetAllFeMaleEmployee</button>
+        </div>
+    </div>
+
+</div>

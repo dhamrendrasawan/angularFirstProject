@@ -1,0 +1,7 @@
+.card img{   
+    border: 2px solid #ddd;
+    border-radius: 28px;
+    padding: 5px;
+    margin-left: 40px;
+    width: 70%;
+}

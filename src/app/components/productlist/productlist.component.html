@@ -1,0 +1,25 @@
+<h1 class="text-center">Product List</h1>
+<div class="container">
+    <div class="row">
+        @if(isLoading){
+            <h1>Loading.......</h1>
+        }@else{
+
+            @for(product of products;track product.id){
+                <div class="col-sm-3 g-4">
+                    <div class="card text-center">
+                        <img src="{{product.image}}" class="card-img-top" alt="..." height="180px">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.title}}</h5>
+                            <p class="card-text text-truncate">{{product.description}}</p>
+                            <p class="card-text">{{product.price}}</p>
+                            <p class="card-text">{{product.rating.rate}}</p>
+                            <a href="#" class="btn btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+</div>

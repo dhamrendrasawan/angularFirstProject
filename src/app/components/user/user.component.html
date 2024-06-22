@@ -1,0 +1,53 @@
+<!--<div class="container">
+    <div class="row">
+        <h1>Users Table</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+               @for(user of users; track user.id){
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.fullName()}}</td>
+                    <td>{{user.annualSal()}}</td>
+                    <td>{{user.sal}}</td>
+                    <td>{{user.annualSal()}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+                }
+               
+            </tbody>
+        </table>
+        <table class="table table-bordered">
+            <tbody>
+            
+                @for(user of usersm; track user.id){
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.sal}}</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>-->
+
+<h1 class="text-center">User List</h1>
+<div class="container">
+    <div class="row">
+        @for(user of users;track user.id){
+        <div class="col-sm-3 g-4">
+            <div class="card text-center">
+                <img src="https://attic.sh/22khbjqy656j556fgjqo3sgzx5u6" class="card-img-top" alt="..." height="180px">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.name}}</h5>
+                    <p class="card-text text-truncate">{{user.username}}</p>
+                    <p class="card-text">{{user.email}}</p>
+                    <p class="card-text">{{user.address.city}}</p>
+                    <a class="btn btn-primary" [routerLink]="['/userdetails', user.id]">Details</a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

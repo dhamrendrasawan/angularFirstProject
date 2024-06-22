@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documenhgghghhghghgt</title>    
+</head>
+<!--<body [attr.style]=" 'background-color:'+ color">-->
+    
+
+<h1 style="text-align:center;">Assignment</h1>
+<br>
+<br>
+<!--using ngif directive-->
+<ng-container *ngIf="show">
+    <div style="margin: 0 auto;text-align: left;">
+        <h2 style="text-align: center;">
+            <p>{{paragraph}}</p>
+        </h2>
+    </div>
+</ng-container>
+
+
+<!--using hidden property-->
+<div [hidden]="showH">
+    <div style="margin: 0 auto;text-align: left;">
+        <h2 style="text-align: center;">
+            <p>{{paragraphH}}</p>
+        </h2>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <button (click)="toggle()" id="bt">{{buttonName}}</button>
+</div>
+<br>
+<!--using hidden property-->
+<div style="text-align: center;">
+    <button (click)="toggleHidden()" id="bth">{{buttonNameHidd}}</button>
+</div>
+
+
+
+<!-- question2 : Create a textarea , let's assume maximum character we can type in that textarea is 100, have a paragraph to show remaining characters we can type 
+in that textarea.Ex: if 'hello' is typed in textarea, remaining characters is 95
+-->
+<div style="text-align:center;width:auto;padding-left:100px;padding-right:100px;margin-top:100px">
+    <textarea [(ngModel)]="myTextarea" maxlength="100" style="height:200px; width:200px;border-style:solid;">
+</textarea>
+</div>
+<h2 style="text-align:center;">
+    <p>Remaining characters is {{100-myTextarea.length}}</p>
+</h2>
+<br>
+
+<!-- Have a drop-down to show state names of a country, when a value is changed in the drop-down show the selected state information in a paragraph
+-->
+<div style="text-align: center;">
+    <select (change)="getStateDesc($event)">
+        <option>select</option>
+        <option [value]="item.desc" *ngFor="let item of states">
+            {{item.state}}
+        </option>
+    </select>
+</div>
+<div style="text-align: center;">
+    <h2>
+        <p style="text-align: center;">{{desc}}</p>
+    </h2>
+</div>
+
+<div style="text-align: center;">
+    <select [(ngModel)]="msg">
+        <option>Bihar</option>
+        <option>Banglore</option>
+        <option>Maharashtra</option>
+        <option>Goa</option>
+        <option>Ap</option>        
+    </select>
+</div>
+<div style="text-align: center;">
+    <h2>
+        <p style="text-align: center;">{{msg}}</p>
+    </h2>
+</div>
+<div style="text-align: center;">
+     <h1 [hidden]="flag" style="text-align: center;">This is Dharmendra</h1>
+     <button (click)="flag=!flag">{{flag?'show':'hide'}}</button>
+</div>
+<br>
+
+<div style="text-align: center;">
+    <button  (click)="bclrLightDark()">{{darkOrLight}}</button>
+</div>
+<br>
+
+<div style="text-align: center;">
+    <button   (click)="toggleTheme()">Light/Dark</button>
+</div>
+
+
+    
+<!--</body>-->
+<br><br>
+</html>

@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="text-center">Registration using Template Driven Form</h1>
+
+      <form #myForm="ngForm" (submit)="submitMyForm(myForm)" (reset)="resetMyForm(myForm)">
+        <div class="form-group">
+          Name:
+          <input class="form-control" #name="ngModel" name="name" [(ngModel)]="user.name" required minlength="5" />
+
+          <span class="text-danger" *ngIf="name.hasError('required') && name.dirty">Name is
+            required</span>
+          <span class="text-danger" *ngIf="name.hasError('minlength') && name.dirty">Name should have
+            minimum 5
+            characters</span>
+        </div>
+        <div class="form-group">
+          password:
+          <input class="form-control" type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required email minlength="5" />
+
+          <span class="text-danger" *ngIf="password.hasError('required') && password.dirty">Password is
+            required</span>
+          <span class="text-danger" *ngIf="password.hasError('minlength') && (password.dirty || password?.touched)">Password should have
+            minimum 5
+            characters</span>
+        </div>
+       <div class="form-group">
+          Email: <input type="email" #email="ngModel" class="form-control" name="email" [(ngModel)]="user.email" required  email>
+          <span class="text-danger" *ngIf="email.hasError('required') && email.dirty">email is
+            required</span>
+            <span class="text-danger" *ngIf="email.hasError('email') && (email.dirty || email?.touched)">email is
+              required</span>
+              <span class="text-danger" *ngIf="email.hasError('email') && (email.dirty || email?.touched)">please enter valid email id
+                </span>
+        </div>
+        <fieldset ngModelGroup="address">
+          <div class="form-group">
+            Street Name: <input #street="ngModel" class="form-control" name="street"
+              [(ngModel)]="user.address.street" />
+          </div>
+          <div class="form-group">
+            City: <input #city="ngModel" class="form-control" name="city" [(ngModel)]="user.address.city" required
+              city />
+            <span class="text-danger" *ngIf="city.hasError('required') && city.dirty">City is
+              required</span>
+          </div>
+          <div class="form-group">
+            PIN: <input #pin="ngModel" class="form-control" name="user.address.pin" [(ngModel)]="user.address.pin"
+              required pin />
+            <span class="text-danger" *ngIf="pin.hasError('required') && pin.dirty">Pin is
+              required</span>
+          </div>
+        </fieldset>
+        <br>
+        <div>
+          <p>
+            <label for="gender" class="mx-1"><b>Gender </b></label>
+            <input type="radio" value="male" id="gender" name="gender" #gender="ngModel" [(ngModel)]="user.gender"
+              required>
+            Male
+            <input type="radio" value="female" id="gender1" name="gender" #gender="ngModel" required
+              [(ngModel)]="user.gender"> Female
+          </p>
+          <div *ngIf="!gender?.valid && (gender?.dirty || gender?.touched)" class="error">
+            <span class="text-danger" *ngIf="gender.hasError('required')">
+              Gender is required
+            </span>
+          </div>
+        </div>
+        <div>
+          <label for="vehicle1" class="mx-1"><b>vehicle</b> </label>
+          <p>
+            <input type="checkbox" id="vehicle1" name="vehicle" value="Bike" class="mx-1" #vehicle="ngModel"
+              [(ngModel)]="user.vehicle" required>
+            <label for="vehicle1"> I have a bike</label>
+            <input type="checkbox" id="vehicle2" name="vehicle" value="Car" class="mx-1" #vehicle1="ngModel"
+              [(ngModel)]="user.vehicle1" required>
+            <label for="vehicle2"> I have a car</label>
+          </p>
+          <div
+            *ngIf="(!vehicle?.valid || !vehicle1?.valid) && ((vehicle?.dirty || vehicle?.touched) || (vehicle1?.dirty || vehicle1?.touched))"
+            class="error">
+            <span class="text-danger" *ngIf="vehicle.hasError('required')"> Please select at least one vehicle </span>
+          </div>
+          <label for="educations">Education</label>
+          <select name="educations" id="educations" #educations="ngModel" [(ngModel)]="user.educations" required>
+            <option value="">select</option>
+            <option value="graduate">Graduate</option>
+            <option value="master">Master</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="10th">10th</option>
+          </select>
+          <span class="text-danger" *ngIf="educations.hasError('required') && educations.dirty">
+            Education is required
+          </span>
+          <br><br>
+          <label for="gender" class="mx-1"><b>Description About you</b> </label>
+          <textarea id="about" name="about" value="Bike" class="mx-1" #about="ngModel" [(ngModel)]="user.about"
+            required>
+
+                </textarea>
+          <span class="text-danger" *ngIf="about.hasError('required') && about.dirty">
+            This is required field
+          </span>
+          <br>
+          <br>
+
+
+          {{myForm.invalid}}
+          <button class="btn btn-success" max="1" type="submit" [disabled]="myForm.invalid">Submit</button>
+          <button class="btn btn-success" type="reset">reset</button>
+        </div>
+
+      </form>
+
+      <!-- <h3>{{myForm.value | json}}</h3>
+            <h3>{{user | json}}</h3>-->
+
+      <!-- <h3>{{fname.value}}</h3>
+            <div>{{fname.errors | json}}</div>
+            <div>{{fname.valid | json}}</div>-->
+    </div>
+  </div>
+</div>

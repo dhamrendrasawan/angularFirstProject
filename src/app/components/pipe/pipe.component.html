@@ -1,0 +1,78 @@
+<div class="container border p-2">
+    <h3 class="text-center">This is pipes Component</h3>
+
+<br>
+    <h3>Enter Cardinal number</h3>
+    <textarea [(ngModel)]="cardinalNumber" rows="2" cols="30" maxlength="200">
+    </textarea>
+    <h3>Corresponding Ordinal number : {{cardinalNumber | cardinalToOrdinal }}</h3>
+     <br>
+     <br>
+
+    <h4>{{name}}</h4>
+    <h4>{{name | uppercase}}</h4>
+    <h4>{{name | lowercase}}</h4>
+    <h4>{{name | titlecase}}</h4>
+
+    <h4>{{mySal}}</h4>
+    <h4>{{mySal | currency}}</h4>
+    <h4>{{ mySal | currency : 'INR' }}</h4>
+    <!-- input  | pipeName : param1 : param2 -->
+    <h4>{{ mySal | currency : '&euro;' }}</h4>
+    <h4>{{ mySal | currency : '&#20803;' }}</h4>
+    <h4>{{ mySal | currency : 'CAD' }}</h4>
+    <h4>{{ mySal | currency : 'CAD':'symbol-narrow' }}</h4>
+    <hr />
+
+    <!-- date pipe -->
+    <h4>{{ myDOB }}</h4>
+    <h4>{{ myDOB | date }}</h4>
+    <h4>{{ myDOB | date : 'fullDate' }}</h4>
+    <h4>{{ myDOB | date : 'mediumDate' }}</h4>
+    <h4>{{ myDOB | date : 'shortDate' }}</h4>
+    <h4>{{ myDOB | date : 'fullTime' }}</h4>
+    <h4>{{ myDOB | date : 'mediumTime' }}</h4>
+    <h4>{{ myDOB | date : 'shortTime' }}</h4>
+    <h4>{{ myDOB | date : 'dd-MMM-yyyy' }}</h4>
+    <h4>{{ myDOB | date: "fullTime":"UTC" }}</h4>
+    <hr />
+
+    <!-- pipe chaining -->
+    <h4>{{ myDOB | date | uppercase}}</h4>
+    <h4>{{ myDOB | date | lowercase}}</h4>
+    <hr />
+
+    <!-- number pipe -->
+    <h4>{{ 12.111222333 | number: "3.2-5" }}</h4>
+    <h4>{{ 1.2 | number: "3.2-5" }}</h4>
+    <h4>{{ 0.25 | percent }}</h4>
+    <h4>{{ 0.60 | percent }}</h4>
+    <h4>{{ 12 | percent }}</h4>
+    <hr />
+
+    <!-- json Pipe -->
+    <h4>{{user}}</h4>
+    <h4>{{ user | json }}</h4>
+
+    <!-- keyvalue pipe -->
+    @for(entry of user | keyvalue;track $index){
+    <h4>{{entry.key}} ==== {{entry.value}}</h4>
+    }
+
+    <h4>{{myMap}}</h4>
+    @for(entry of myMap | keyvalue;track $index){
+    <h4>{{entry.key}} ==== {{entry.value}}</h4>
+    }
+
+    <h4>{{arr | slice: 2 : 4}}</h4>
+
+    <textarea [(ngModel)]="msg" rows="3" cols="30" maxlength="100">
+    </textarea>
+    <h4>Remaining: {{ msg | remaining :100 }}</h4>
+
+    <textarea [(ngModel)]="msg" rows="3" cols="30" maxlength="200">
+    </textarea>
+    <h4>Remaining: {{ msg | remaining : 200 }}</h4>
+
+   
+</div>

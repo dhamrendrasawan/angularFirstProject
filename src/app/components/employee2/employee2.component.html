@@ -1,0 +1,12 @@
+<h4>Message-2 Component</h4>
+
+<table class="table table-bordered table-striped">
+    <tbody>
+        @for(msg of messages;track $index){
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{msg.text}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

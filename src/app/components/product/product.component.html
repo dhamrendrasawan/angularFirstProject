@@ -1,0 +1,62 @@
+<h1 class="text-center">Product Details</h1>
+
+<!--<div class="container">
+    <div class="row">
+        <div *ngFor="let product of products">
+            {{product.title}} -- {{product.price}}
+        </div>
+    </div>
+</div>-->
+<br>
+<br>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+            <input type="search" name="search" id="" [(ngModel)]="seachText"  class="form-control">
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary max-1" (click)="sortProductAsc()">Asc</button>
+            <button class="btn btn-secondary max-1" (click)="sortProductDesc()">Desc</button>
+        </div>   
+    </div>  
+     <div class="row">
+        <!--<div class="row  cols-md-4 g-4"></div>-->
+      @for(product of products| paginate: { itemsPerPage: 4, currentPage:p} ;track product.id ){        
+        <div class="col-md-2 g-3">
+            <div class="card">
+                <img [src]="product.image" alt="product details" />
+                <div class="card-body">
+                    <h5 class="card-title"><b>{{product.title}}</b></h5>
+                    <p class="card-text">
+                    <h6>
+                        <p class="card-text"><b>ID</b>:{{product.id}}</p>
+                    </h6>
+                    <h6>
+                        <p class="card-text"><b style="color: rgb(0, 13, 255);">Price</b>: <b>₹{{product.price}}</b></p>
+                    </h6>
+                    <h6>
+                        <p class="card-text"><b>Description</b>: {{product.description}}</p>
+                    </h6>
+                    <h6>
+                        <p class="card-text"><b>Category</b>: {{product.category}} </p>
+                    </h6>
+                    <h6>
+                        <p class="card-text"><b>Rating</b>: <b
+                                style="color: rgba(18, 221, 62, 0.797);">{{product.rating.rate}}</b></p>
+                    </h6>
+                    <h6>
+                        <p class="card-text"><b>Rating count</b>: <b
+                                style="color: rgba(18, 221, 62, 0.797);">{{product.rating.count}}</b></p>
+                    </h6>
+
+                </div>
+            </div>
+        </div>
+        } @empty {
+            <h3>No product available</h3>
+        }
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<br><br>
